@@ -53,6 +53,13 @@ dependencies {
         // Compose support dependencies
         composeUI()
 
+        // https://plugins.jetbrains.com/docs/intellij/android-studio-releases-list.html?from=jetbrains.org#2025
+        // 需要翻墙
+//        androidStudio("2025.2.2.7")
+//        bundledPlugins("org.jetbrains.android")
+        // 打包的插件依赖
+//        bundledPlugins(listOf("org.jetbrains.android", "org.jetbrains.kotlin"))
+
         // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
         bundledPlugins(providers.gradleProperty("platformBundledPlugins").map { it.split(',') })
 

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>org.jetbrains.plugins.compose.template</id>
-    <name>Compose Template Example</name>
-    <vendor url="https://www.yourcompany.com">YourCompany</vendor>
+    <name>LayoutInspectorV2 Max</name>
+    <vendor url="https://www.codemx.cn">CodeMx</vendor>
 
     <depends>com.intellij.modules.compose</depends>
 
@@ -12,4 +12,12 @@
                     icon="org.jetbrains.plugins.template.ComposeIcons.ComposeToolWindow"
                     id="ComposeSamples"/>
     </extensions>
+    <actions>
+        <action id="org.jetbrains.plugins.template.action.AndroidLayoutInspectorAction"
+                class="org.jetbrains.plugins.template.action.AndroidLayoutInspectorAction"
+                text="LayoutInspectorV2 Max"
+                description="LayoutInspectorV2 Max">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
