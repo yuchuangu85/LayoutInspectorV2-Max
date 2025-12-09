@@ -1,9 +1,12 @@
 <idea-plugin>
-    <id>org.jetbrains.plugins.compose.template</id>
-    <name>LayoutInspectorV2 Max</name>
+    <id>com.github.yuchuangu85.layoutinspectorv2max</id>
+    <name>LayoutInspectorV2-Max</name>
     <vendor url="https://www.codemx.cn">CodeMx</vendor>
 
     <depends>com.intellij.modules.compose</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
 
     <resource-bundle>messages.ComposeTemplateBundle</resource-bundle>
 
@@ -13,8 +16,8 @@
                     id="ComposeSamples"/>
     </extensions>
     <actions>
-        <action id="org.jetbrains.plugins.template.action.AndroidLayoutInspectorAction"
-                class="org.jetbrains.plugins.template.action.AndroidLayoutInspectorAction"
+        <action id="org.jetbrains.plugins.template.action.AndroidRunLayoutInspectorAction"
+                class="org.jetbrains.plugins.template.action.AndroidRunLayoutInspectorAction"
                 text="LayoutInspectorV2 Max"
                 description="LayoutInspectorV2 Max">
             <add-to-group group-id="ToolsMenu" anchor="first"/>

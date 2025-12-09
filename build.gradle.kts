@@ -48,20 +48,27 @@ dependencies {
     testImplementation(libs.skikoAwtRuntimeAll)
 
     intellijPlatform {
-        create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
-
-        // Compose support dependencies
-        composeUI()
-
+        // ----------在线下载---------------------------------------------
+//        intellijIdea(providers.gradleProperty("platformVersion"))
         // https://plugins.jetbrains.com/docs/intellij/android-studio-releases-list.html?from=jetbrains.org#2025
         // 需要翻墙
 //        androidStudio("2025.2.2.7")
-//        bundledPlugins("org.jetbrains.android")
-        // 打包的插件依赖
-//        bundledPlugins(listOf("org.jetbrains.android", "org.jetbrains.kotlin"))
 
+        // ---------使用本地-----------------------------------------------
+//        local("/Users/yuchuan/Applications/IntelliJ IDEA Ultimate.app/Contents")
+        local("/Users/yuchuan/Applications/Android Studio.app/Contents")
+        // 打包的插件依赖
+        bundledPlugins(listOf("org.jetbrains.android", "org.jetbrains.kotlin", "com.intellij.java"))
+
+        // Compose support dependencies
+        composeUI()
         // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
-        bundledPlugins(providers.gradleProperty("platformBundledPlugins").map { it.split(',') })
+        bundledPlugins(
+            providers.gradleProperty("platformBundledPlugins")
+                .map {
+                    it.split(',')
+                }
+        )
 
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
         plugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
@@ -94,9 +101,7 @@ intellijPlatform {
         changeNotes = providers.gradleProperty("pluginVersion").map { pluginVersion ->
             with(changelog) {
                 renderItem(
-                    (getOrNull(pluginVersion) ?: getUnreleased())
-                        .withHeader(false)
-                        .withEmptySections(false),
+                    (getOrNull(pluginVersion) ?: getUnreleased()).withHeader(false).withEmptySections(false),
                     Changelog.OutputType.HTML,
                 )
             }
